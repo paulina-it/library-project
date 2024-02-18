@@ -3,6 +3,7 @@ package uk.bovykina.libraryproject.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Collection;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -10,20 +11,20 @@ import java.util.Set;
 @Builder
 @Getter
 @Entity
-public class Author {
-
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
     @Setter
-    private String name;
+    private String username;
 
     @Column(nullable = false)
     @Setter
-    private String surname;
+    private String password;
 
-    @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    @Column(nullable = false)
+    @Setter
+    private Role role;
 }

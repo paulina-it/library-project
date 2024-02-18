@@ -5,16 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uk.bovykina.libraryproject.model.Author;
-
-import java.util.List;
+import uk.bovykina.libraryproject.model.Genre;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class BookGenreDto {
-    private Long id;
+public class BookCreateDto {
     private String name;
-    private List authors;
+    private Genre genre;
 }
