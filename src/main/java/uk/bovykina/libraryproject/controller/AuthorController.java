@@ -1,11 +1,9 @@
 package uk.bovykina.libraryproject.controller;
-import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import uk.bovykina.libraryproject.dto.AuthorCreateDto;
-import uk.bovykina.libraryproject.dto.AuthorDto;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import lombok.RequiredArgsConstructor;
 import uk.bovykina.libraryproject.service.AuthorService;
 
 @Controller
@@ -20,8 +18,8 @@ public class AuthorController {
         return "authors";
     }
 
-    @PostMapping("/author/create")
-    AuthorDto createAuthor(@RequestBody @Valid AuthorCreateDto authorCreateDto) {
-        return authorService.createAuthor(authorCreateDto);
-    }
+    // @PostMapping("/author/create")
+    // AuthorDto createAuthor(@RequestBody @Valid AuthorCreateDto authorCreateDto) {
+    //     return authorService.createAuthor(authorCreateDto);
+    // }
 }

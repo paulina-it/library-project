@@ -8,7 +8,7 @@
     <changeSet id="init db" author="author name">
         <sql>
             ALTER TABLE users
-                ADD COLUMN user_role VARCHAR(255) NOT NULL CHECK (user_role IN ('USER', 'ADMIN'));
+                ADD COLUMN role VARCHAR(255) NOT NULL CHECK (role IN ('USER', 'ADMIN'));
         </sql>
     </changeSet>
 </databaseChangeLog>

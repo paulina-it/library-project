@@ -1,16 +1,25 @@
 package uk.bovykina.libraryproject.model;
 
-import jakarta.persistence.*;
-import lombok.*;
-
-import java.util.Collection;
-import java.util.Set;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +33,7 @@ public class User {
     @Setter
     private String password;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     @Setter
     private Role role;

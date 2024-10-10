@@ -1,17 +1,14 @@
 package uk.bovykina.libraryproject.controller;
 
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import uk.bovykina.libraryproject.dto.AuthorDto;
-import uk.bovykina.libraryproject.dto.BookDto;
+
+import lombok.RequiredArgsConstructor;
 import uk.bovykina.libraryproject.dto.GenreDto;
-import uk.bovykina.libraryproject.model.Genre;
 import uk.bovykina.libraryproject.service.GenreService;
 
-import java.util.List;
 
 
 @RestController

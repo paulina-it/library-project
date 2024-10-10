@@ -1,6 +1,5 @@
 package uk.bovykina.libraryproject.dto;
 
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +10,7 @@ import uk.bovykina.libraryproject.model.Role;
 @NoArgsConstructor
 @Data
 @Builder
-public class UserDto {
-    @Id
+public class UpdateUserDto {
     private Long id;
     private String username;
     private String password;

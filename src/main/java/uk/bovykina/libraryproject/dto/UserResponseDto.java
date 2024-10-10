@@ -11,10 +11,9 @@ import uk.bovykina.libraryproject.model.Role;
 @NoArgsConstructor
 @Data
 @Builder
-public class UserDto {
+public class UserResponseDto {
     @Id
     private Long id;
     private String username;
-    private String password;
     private Role role;
 }
