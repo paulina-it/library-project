@@ -1,4 +1,5 @@
 package uk.bovykina.libraryproject.controller;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -6,8 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import uk.bovykina.libraryproject.dto.BookCreateDto;
 import uk.bovykina.libraryproject.dto.BookDto;
@@ -16,6 +20,7 @@ import uk.bovykina.libraryproject.service.BookService;
 
 @RestController
 @RequiredArgsConstructor
+@SecurityRequirement(name = "library-users")
 public class BookRestController {
 
     private final BookService bookService;
@@ -34,7 +39,8 @@ public class BookRestController {
     }
 
     @PostMapping("/book/create")
-    BookDto createAuthor(@RequestBody BookCreateDto bookCreateDto) {
+    @ResponseStatus(HttpStatus.CREATED)
+    BookDto createAuthor(@RequestBody @Valid BookCreateDto bookCreateDto) {
         return bookService.createBook(bookCreateDto);
     }
 

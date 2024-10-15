@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import uk.bovykina.libraryproject.dto.CreateUserDto;
 import uk.bovykina.libraryproject.dto.UpdateUserDto;
@@ -27,7 +28,7 @@ public class UserRestController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserResponseDto createUser(@RequestBody CreateUserDto userDto) {
+    public UserResponseDto createUser(@RequestBody @Valid CreateUserDto userDto) {
         return userService.createUser(userDto);
     }
 

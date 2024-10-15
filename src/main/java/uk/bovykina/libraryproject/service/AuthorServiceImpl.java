@@ -5,6 +5,7 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import uk.bovykina.libraryproject.dto.AuthorCreateDto;
@@ -12,22 +13,32 @@ import uk.bovykina.libraryproject.dto.AuthorDto;
 import uk.bovykina.libraryproject.dto.AuthorUpdateDto;
 import uk.bovykina.libraryproject.dto.BookDto;
 import uk.bovykina.libraryproject.model.Author;
-import uk.bovykina.libraryproject.model.Book;
 import uk.bovykina.libraryproject.repository.AuthorRepository;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthorServiceImpl implements AuthorService {
 
     private final AuthorRepository authorRepository;
 
-    @Override
+  @Override
     public AuthorDto getAuthorById(Long id) {
-        Author author = authorRepository.findById(id).orElseThrow();
-        return convertEntityToDto(author);
+        log.info("Try to find author by id {}", id);
+        Optional<Author> author = authorRepository.findById(id);
+        if (author.isPresent()) {
+            AuthorDto authorDto = convertEntityToDto(author.get());
+            log.info("Author: {}", authorDto.toString());
+            return authorDto;
+        } else {
+            log.error("Author with id {} not found", id);
+            throw new NoSuchElementException("No value present");
+        }
     }
     @Override
     public AuthorDto getByNameV1(String name) {
