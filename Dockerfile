@@ -16,7 +16,7 @@ WORKDIR /app
 # Copy the .jar file from the Maven build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose the port that your app will run on (change this if necessary)
+# Expose the port (important for Render to detect)
 EXPOSE 8080
 
 # Command to run the app
